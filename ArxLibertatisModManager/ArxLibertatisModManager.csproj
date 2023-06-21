@@ -13,15 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AvaloniaXaml Remove="ResourceDictionaries\App.axaml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Assets\gear.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <AvaloniaResource Include="ResourceDictionaries\App.axaml" />
+    <AvaloniaResource Include="ResourceDictionaries\**" />
   </ItemGroup>
 
   <ItemGroup>
