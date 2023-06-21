@@ -1,0 +1,32 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:ArxLibertatisModManager.ViewModels"
+        xmlns:uc="using:ArxLibertatisModManager.UserControls"
+        xmlns:classes="using:ArxLibertatisModManager.Classes"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="ArxLibertatisModManager.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Arx Libertatis Mod Manager"
+        Width="800"
+        Height="800"
+        >
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+  <Grid ColumnDefinitions="300,1*" RowDefinitions="1*">
+    <StackPanel Background="CadetBlue" Grid.Column="0">
+      <uc:PageNavItem Name="NavMods" Title="Mods If You See This Life Sucks" Command="{Binding ModsClicked}"/>
+      <uc:PageNavItem Name="NavConfiguration" Title="Configuration If You See This Life Sucks" Command="{Binding ConfigurationClicked}"/>
+    </StackPanel>
+    <Panel Background="AliceBlue" Grid.Column="1">
+      <uc:ModsPage Name="ModsPage" IsVisible="{Binding ActivePage, Converter={StaticResource EqualsConverter}, ConverterParameter={x:Static classes:PageEnum.Mods}}"></uc:ModsPage>
+      <uc:ConfigurationPage Name="ConfigurationPage" IsVisible="{Binding ActivePage, Converter={StaticResource EqualsConverter}, ConverterParameter={x:Static classes:PageEnum.Configuration}}"></uc:ConfigurationPage>
+    </Panel>
+  </Grid>
+
+</Window>
