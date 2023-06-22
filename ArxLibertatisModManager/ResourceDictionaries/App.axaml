@@ -3,4 +3,6 @@
                     xmlns:valueConverters="using:ArxLibertatisModManager.ValueConverters"
                     >
   <valueConverters:EqualsConverter x:Key="EqualsConverter"/>
+  <valueConverters:NotEqualsConverter x:Key="NotEqualsConverter"/>
+  <valueConverters:NegatingValueConverter x:Key="NegatingValueConverter"/>
 </ResourceDictionary>

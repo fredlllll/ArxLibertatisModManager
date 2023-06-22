@@ -4,5 +4,40 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ArxLibertatisModManager.UserControls.ModsPage">
-  Mods
+  <Grid Margin="10,0,10,0" RowDefinitions="60,*,30,70" ColumnDefinitions="*" IsVisible="{Binding SyncReady}">
+    <StackPanel Grid.Row="0" Grid.Column="0">
+      <Label Margin="0,20,0,30" HorizontalAlignment="Center">Mods</Label>
+    </StackPanel>
+    <ListBox Grid.Row="1" Grid.Column="0" Items="{Binding AllMods}" BorderThickness="0,1,0,0">
+      <ListBox.Styles>
+        <Style Selector="ListBoxItem">
+          <Setter Property="Padding" Value="3"/>
+          <Setter Property="Background" Value="LightGoldenrodYellow"/>
+          <Setter Property="BorderBrush" Value="Black"/>
+          <Setter Property="BorderThickness" Value="1,0,1,1"/>
+        </Style>
+      </ListBox.Styles>
+      <ListBox.ItemTemplate>
+        <DataTemplate>
+          <StackPanel Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding Selected}"></CheckBox>
+            <Image Source="/Assets/arrowup.png" Width="32" Margin="0,0,5,0" IsVisible="{Binding IsUpload}"/>
+            <Image Source="/Assets/arrowdown.png" Width="32" Margin="0,0,5,0" IsVisible="{Binding IsUpload, Converter={StaticResource NegatingValueConverter}}"/>
+            <TextBlock VerticalAlignment="Center" Text="{Binding RelativeFilePath}" TextWrapping="WrapWithOverflow"/>
+          </StackPanel>
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+    </ListBox>
+    <Label Grid.Row="2" Grid.Column="0" DockPanel.Dock="Bottom" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="{Binding Error}" Foreground="Red" IsVisible="{Binding Error, Converter={StaticResource NotEqualsConverter},ConverterParameter={x:Null}}"/>
+    <StackPanel Grid.Row="3" Grid.Column="0">
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <Button Name="BtnSelectAll" Command="{Binding SelectAllClicked}">Select All</Button>
+        <Button Name="BtnDeselectAll" Command="{Binding DeselectAllClicked}">Deselect All</Button>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <Button Name="BtnActivateSelected" Command="{Binding ActivateSelectedClicked}">Activate Selected</Button>
+        <Button Name="BtnDeactivateSelected" Command="{Binding DeactivateSelectedClicked}">DeactivateSelected</Button>
+      </StackPanel>
+    </StackPanel>
+  </Grid>
 </UserControl>

@@ -13,15 +13,10 @@
         Width="800"
         Height="800"
         >
-
-    <Design.DataContext>
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
-
   <Grid ColumnDefinitions="300,1*" RowDefinitions="1*">
     <StackPanel Background="CadetBlue" Grid.Column="0">
-      <uc:PageNavItem Name="NavMods" Title="Mods If You See This Life Sucks" Command="{Binding ModsClicked}"/>
-      <uc:PageNavItem Name="NavConfiguration" Title="Configuration If You See This Life Sucks" Command="{Binding ConfigurationClicked}"/>
+      <uc:PageNavItem Name="NavMods" Title="Mods" Command="{Binding ModsClicked}"/>
+      <uc:PageNavItem Name="NavConfiguration" Title="Configuration" Command="{Binding ConfigurationClicked}"/>
     </StackPanel>
     <Panel Background="AliceBlue" Grid.Column="1">
       <uc:ModsPage Name="ModsPage" IsVisible="{Binding ActivePage, Converter={StaticResource EqualsConverter}, ConverterParameter={x:Static classes:PageEnum.Mods}}"></uc:ModsPage>
