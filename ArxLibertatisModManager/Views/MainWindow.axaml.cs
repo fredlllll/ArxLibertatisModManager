@@ -9,14 +9,12 @@ namespace ArxLibertatisModManager.Views
         public static MainWindow Instance { get; private set; }
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
-        public readonly MainWindowViewModel viewModel;
+        public MainWindowViewModel ViewModel { get; private set; }
         public MainWindow()
         {
             Instance = this;
-
+            DataContext = ViewModel = new();
             InitializeComponent();
-
-            DataContext = viewModel = new();
         }
     }
 }

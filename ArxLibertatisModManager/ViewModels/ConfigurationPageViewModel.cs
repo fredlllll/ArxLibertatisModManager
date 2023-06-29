@@ -19,6 +19,11 @@ namespace ArxLibertatisModManager.ViewModels
         public string ModsFolder { get { return Path.Combine(ArxLibertatisFolder, "mods"); } }
         public string ModsCacheFolder { get { return Path.Combine(ArxLibertatisFolder, "modscache"); } }
 
+        public ConfigurationPageViewModel() : base(true)
+        {
+
+        }
+
         public async Task SearchFolderClicked()
         {
             var result = await ofd.ShowAsync(MainWindow.Instance);

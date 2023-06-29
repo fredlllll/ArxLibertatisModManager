@@ -19,7 +19,7 @@ namespace ArxLibertatisModManager.ViewModels
         private string description = "";
         [ObservableProperty]
         private string author = "";
-        private string zipName;
+        private readonly string zipName;
         public string ZipName { get { return zipName; } }
         [ObservableProperty]
         private bool active = false;
@@ -45,7 +45,11 @@ namespace ArxLibertatisModManager.ViewModels
             using var entryStream = entry.Open();
             try
             {
-                var manifest = JsonSerializer.Deserialize<ModManifest>(entryStream) ?? throw new Exception();
+                var serializeOptions = new JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                };
+                var manifest = JsonSerializer.Deserialize<ModManifest>(entryStream, serializeOptions) ?? throw new Exception();
                 Name = manifest.Name;
                 Description = manifest.Description;
                 Author = manifest.Author;

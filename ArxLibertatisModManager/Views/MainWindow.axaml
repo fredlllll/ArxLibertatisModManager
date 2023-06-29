@@ -19,8 +19,8 @@
       <uc:PageNavItem Name="NavConfiguration" Title="Configuration" Command="{Binding ConfigurationClicked}"/>
     </StackPanel>
     <Panel Background="AliceBlue" Grid.Column="1">
-      <uc:ModsPage Name="ModsPage" IsVisible="{Binding ActivePage, Converter={StaticResource EqualsConverter}, ConverterParameter={x:Static classes:PageEnum.Mods}}"></uc:ModsPage>
-      <uc:ConfigurationPage Name="ConfigurationPage" IsVisible="{Binding ActivePage, Converter={StaticResource EqualsConverter}, ConverterParameter={x:Static classes:PageEnum.Configuration}}"></uc:ConfigurationPage>
+      <uc:ConfigurationPage Name="ConfigurationPage" IsVisible="{Binding $parent[Window].DataContext.ActivePage, Converter={StaticResource EqualsConverter}, ConverterParameter={x:Static classes:PageEnum.Configuration}}"></uc:ConfigurationPage>
+      <uc:ModsPage Name="ModsPage" IsVisible="{Binding $parent[Window].DataContext.ActivePage, Converter={StaticResource EqualsConverter}, ConverterParameter={x:Static classes:PageEnum.Mods}}"></uc:ModsPage>
     </Panel>
   </Grid>
 

@@ -20,7 +20,7 @@
       <ListBox.ItemTemplate>
         <DataTemplate>
           <StackPanel Orientation="Horizontal">
-            <CheckBox IsChecked="{Binding Active}"></CheckBox>
+            <CheckBox IsChecked="{Binding Active}" IsEnabled="{Binding CanBeActivated}"></CheckBox>
             <StackPanel>
               <TextBlock FontWeight="Bold" Text="{Binding Name}" TextWrapping="WrapWithOverflow"/>
               <TextBlock Text="{Binding Description}" TextWrapping="WrapWithOverflow"/>
@@ -34,10 +34,11 @@
       <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
         <Button Name="BtnSelectAll" Command="{Binding SelectAllClicked}">Select All</Button>
         <Button Name="BtnDeselectAll" Command="{Binding DeselectAllClicked}">Deselect All</Button>
+        <Button Name="BtnUpdateMods" Command="{Binding UpdateModsClicked}">Update Mods</Button>
       </StackPanel>
       <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-        <Button Name="BtnActivateSelected" Command="{Binding StartGameModsClicked}">Start Game With Mods</Button>
-        <Button Name="BtnDeactivateSelected" Command="{Binding StartGameClicked}">Start Game Without Mods</Button>
+        <Button Name="BtnActivateSelected" Command="{Binding StartGameModsClicked}" IsEnabled="{Binding GameActive, Converter={StaticResource NegatingValueConverter}}">Start Game With Mods</Button>
+        <Button Name="BtnDeactivateSelected" Command="{Binding StartGameClicked}" IsEnabled="{Binding GameActive, Converter={StaticResource NegatingValueConverter}}">Start Game Without Mods</Button>
       </StackPanel>
     </StackPanel>
   </Grid>
