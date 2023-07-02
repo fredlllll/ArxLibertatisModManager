@@ -33,7 +33,9 @@ namespace ArxLibertatisModManager.ViewModels
         public async Task UpdateAllMods()
         {
             AllMods.Clear();
-            var files = Directory.EnumerateFiles(ConfigurationPage.Instance.ViewModel.ModsFolder, "*.zip");
+            var folder = ConfigurationPage.Instance.ViewModel.ModsFolder;
+            Directory.CreateDirectory(folder);
+            var files = Directory.EnumerateFiles(folder, "*.zip");
             foreach (var file in files)
             {
                 var mod = new ModViewModel(file);
@@ -57,6 +59,17 @@ namespace ArxLibertatisModManager.ViewModels
                     Active = false,
                     Name = "test mod",
                     Description = "this mod does nothing",
+                    Version = "v96",
+                    Url = "aaa"
+                });
+
+                AllMods.Add(new ModViewModel("test2.zip")
+                {
+                    Active = false,
+                    Name = "another mod",
+                    Description = "this mod does nothing too",
+                    Version = "v1",
+                    Url = null
                 });
             }
         }

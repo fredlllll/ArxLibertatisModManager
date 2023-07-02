@@ -16,9 +16,13 @@ namespace ArxLibertatisModManager.ViewModels
         [ObservableProperty]
         private string name = "";
         [ObservableProperty]
-        private string description = "";
+        private string? description = null;
         [ObservableProperty]
-        private string author = "";
+        private string? author = null;
+        [ObservableProperty]
+        private string? url = null;
+        [ObservableProperty]
+        private string? version = null;
         private readonly string zipName;
         public string ZipName { get { return zipName; } }
         [ObservableProperty]
@@ -53,6 +57,8 @@ namespace ArxLibertatisModManager.ViewModels
                 Name = manifest.Name;
                 Description = manifest.Description;
                 Author = manifest.Author;
+                Version = manifest.Version;
+                Url = manifest.Url;
             }
             catch
             {
@@ -60,6 +66,14 @@ namespace ArxLibertatisModManager.ViewModels
                 Name = "Error";
                 Description = "Could not load manifest.json";
                 return;
+            }
+        }
+
+        public void UrlClicked()
+        {
+            if (Url != null)
+            {
+                Util.OpenURL(Url);
             }
         }
 

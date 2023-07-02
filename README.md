@@ -9,6 +9,7 @@ mods need a manifest.json in the root of the zip in the form of
 {
   "name":"My mod",
   "description":"short description",
-  "author":"your name"
+  "author":"your name",
+  "url":"project url",
 }
 ```

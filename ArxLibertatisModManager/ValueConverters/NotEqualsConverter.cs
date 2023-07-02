@@ -8,8 +8,20 @@ namespace ArxLibertatisModManager.ValueConverters
     {
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
-            var retval = value?.Equals(parameter);
-            return !retval;
+            bool retval;
+            if (value == parameter)
+            {
+                retval = true;
+            }
+            else if (value == null)
+            {
+                retval = false;
+            }
+            else
+            {
+                retval = value.Equals(parameter);
+            }
+            return !retval; //note value negation at end here
         }
 
         public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)

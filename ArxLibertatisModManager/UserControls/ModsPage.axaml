@@ -19,13 +19,18 @@
       </ListBox.Styles>
       <ListBox.ItemTemplate>
         <DataTemplate>
-          <StackPanel Orientation="Horizontal">
-            <CheckBox IsChecked="{Binding Active}" IsEnabled="{Binding CanBeActivated}"></CheckBox>
-            <StackPanel>
-              <TextBlock FontWeight="Bold" Text="{Binding Name}" TextWrapping="WrapWithOverflow"/>
-              <TextBlock Text="{Binding Description}" TextWrapping="WrapWithOverflow"/>
+          <Grid ColumnDefinitions="*,40">
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+              <CheckBox IsChecked="{Binding Active}" IsEnabled="{Binding CanBeActivated}"></CheckBox>
+              <StackPanel>
+                <TextBlock FontWeight="Bold" Text="{Binding Name}" TextWrapping="WrapWithOverflow"/>
+                <TextBlock Text="{Binding Description}" TextWrapping="WrapWithOverflow"/>
+              </StackPanel>
             </StackPanel>
-          </StackPanel>
+            <Button Command="{Binding UrlClicked}" Grid.Column="1" IsVisible="{Binding Url, Converter={StaticResource NotEqualsConverter}, ConverterParameter={x:Null}}">
+              <Image Source="/Assets/web.png"/>
+            </Button>
+          </Grid>
         </DataTemplate>
       </ListBox.ItemTemplate>
     </ListBox>

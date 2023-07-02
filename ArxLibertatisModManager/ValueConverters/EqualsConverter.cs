@@ -12,7 +12,19 @@ namespace ArxLibertatisModManager.ValueConverters
     {
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
-            var retval = value?.Equals(parameter);
+            bool retval;
+            if (value == parameter)
+            {
+                retval = true;
+            }
+            else if (value == null)
+            {
+                retval = false;
+            }
+            else
+            {
+                retval = value.Equals(parameter);
+            }
             return retval;
         }
 
