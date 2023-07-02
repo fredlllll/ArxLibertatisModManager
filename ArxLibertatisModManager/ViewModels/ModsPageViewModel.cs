@@ -77,7 +77,7 @@ namespace ArxLibertatisModManager.ViewModels
         public async void StartGameModsClicked()
         {
             gameProcess = new GameProcess(
-                Path.Combine(ConfigurationPage.Instance.ViewModel.ArxLibertatisFolder, "arx.exe"),
+                Path.Combine(ConfigurationPage.Instance.ViewModel.ArxLibertatisFolder, Util.GetArxExecutableName()),
                 AllMods.Where(mod => mod.Active)
                 );
             gameProcess.ProcessExit += GameProcess_ProcessExit;
@@ -98,7 +98,7 @@ namespace ArxLibertatisModManager.ViewModels
         public void StartGameClicked()
         {
             gameProcess = new GameProcess(
-                Path.Combine(ConfigurationPage.Instance.ViewModel.ArxLibertatisFolder, "arx.exe"),
+                Path.Combine(ConfigurationPage.Instance.ViewModel.ArxLibertatisFolder, Util.GetArxExecutableName()),
                 Enumerable.Empty<ModViewModel>()
                 );
             gameProcess.ProcessExit += GameProcess_ProcessExit;
@@ -119,7 +119,7 @@ namespace ArxLibertatisModManager.ViewModels
 
         private void DeselectAllClicked()
         {
-            foreach(var mod in AllMods)
+            foreach (var mod in AllMods)
             {
                 mod.Active = false;
             }

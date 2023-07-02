@@ -37,5 +37,14 @@ namespace ArxLibertatisModManager.Classes
                 throw new NotSupportedException("only windows, linux and osx are supported for opening urls atm");
             }
         }
+
+        public static string GetArxExecutableName()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return "arx.exe";
+            }
+            return "arx";
+        }
     }
 }
