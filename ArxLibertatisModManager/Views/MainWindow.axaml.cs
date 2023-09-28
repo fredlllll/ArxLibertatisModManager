@@ -13,8 +13,10 @@ namespace ArxLibertatisModManager.Views
         public MainWindow()
         {
             Instance = this;
-            DataContext = ViewModel = new();
+            DataContext = ViewModel = new(this);
             InitializeComponent();
+
+            ViewModel.ActivePage = ArxLibertatisModManager.Classes.PageEnum.Mods;
         }
     }
 }

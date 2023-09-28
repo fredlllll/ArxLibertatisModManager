@@ -6,7 +6,7 @@
              x:Class="ArxLibertatisModManager.UserControls.PageNavItem">
   <Border BorderBrush="Black" BorderThickness="0 1">
     <Button Width="302" Margin="-1" Padding="0" Name="BtnButton" Command="{Binding CallCommand}">
-      <StackPanel Orientation="Horizontal" Height="98" Background="#85cacc">
+      <StackPanel Name="StckPanel" Orientation="Horizontal" Height="98" Background="{Binding ButtonBackgroundColor}">
         <Image Margin="10" Width="80" Height="80" Source="/Assets/gear.png" />
         <Label Name="LblTitle" VerticalAlignment="Center" FontSize="20" Content="{Binding Title}" />
       </StackPanel>

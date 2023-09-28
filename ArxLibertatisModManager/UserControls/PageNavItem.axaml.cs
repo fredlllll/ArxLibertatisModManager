@@ -33,5 +33,18 @@ public partial class PageNavItem : UserControl
 
         LblTitle.DataContext = viewModel;
         BtnButton.DataContext = viewModel;
+        StckPanel.DataContext = viewModel;
+    }
+
+    public void SetActive(bool active)
+    {
+        if (active)
+        {
+            viewModel.ButtonBackgroundColor = PageNavItemViewModel.ActiveColor;
+        }
+        else
+        {
+            viewModel.ButtonBackgroundColor = PageNavItemViewModel.InactiveColor;
+        }
     }
 }

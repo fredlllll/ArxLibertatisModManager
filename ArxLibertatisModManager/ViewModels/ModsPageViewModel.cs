@@ -3,7 +3,6 @@ using ArxLibertatisModManager.UserControls;
 using ArxLibertatisModManager.Views;
 using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;

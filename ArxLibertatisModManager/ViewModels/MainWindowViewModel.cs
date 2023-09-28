@@ -7,11 +7,33 @@ namespace ArxLibertatisModManager.ViewModels
     public partial class MainWindowViewModel : ViewModelBase
     {
         [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(ModsPageActive))]
-        private PageEnum activePage = PageEnum.Mods;
+        private PageEnum activePage = PageEnum.None;
 
-        [ObservableProperty]
-        private bool modsPageActive = false;
+        private readonly MainWindow mainWindow;
+
+        public MainWindowViewModel(MainWindow mainWindow)
+        {
+            this.mainWindow = mainWindow;
+            this.PropertyChanged += MainWindowViewModel_PropertyChanged;
+        }
+
+        private void MainWindowViewModel_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(ActivePage))
+            {
+                mainWindow.NavConfiguration.SetActive(false);
+                mainWindow.NavMods.SetActive(false);
+                switch (ActivePage)
+                {
+                    case PageEnum.Mods:
+                        mainWindow.NavMods.SetActive(true);
+                        break;
+                    case PageEnum.Configuration:
+                        mainWindow.NavConfiguration.SetActive(true);
+                        break;
+                }
+            }
+        }
 
         public void ModsClicked()
         {
