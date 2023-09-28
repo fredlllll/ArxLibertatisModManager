@@ -1,7 +1,9 @@
 ﻿using ArxLibertatisModManager.Classes;
 using ArxLibertatisModManager.UserControls;
+using ArxLibertatisModManager.Views;
 using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -117,11 +119,28 @@ namespace ArxLibertatisModManager.ViewModels
             }
         }
 
-        private void DeselectAllClicked()
+        public void DeselectAllClicked()
         {
             foreach (var mod in AllMods)
             {
                 mod.Active = false;
+            }
+        }
+
+        public void OpenModsFolderClicked()
+        {
+            var folder = ConfigurationPage.Instance.ViewModel.ModsFolder;
+            try
+            {
+                if (!Directory.Exists(folder))
+                {
+                    Directory.CreateDirectory(folder);
+                }
+                Util.OpenFolder(folder);
+            }
+            catch
+            {
+                MainWindow.Instance.ViewModel.ConfigurationClicked();
             }
         }
     }

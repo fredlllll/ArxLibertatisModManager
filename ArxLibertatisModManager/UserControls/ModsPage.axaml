@@ -40,6 +40,7 @@
         <Button Name="BtnSelectAll" Command="{Binding SelectAllClicked}">Select All</Button>
         <Button Name="BtnDeselectAll" Command="{Binding DeselectAllClicked}">Deselect All</Button>
         <Button Name="BtnUpdateMods" Command="{Binding UpdateModsClicked}">Update Mods</Button>
+        <Button Name="BtnOpenModsFolder" Command="{Binding OpenModsFolderClicked}">Open Mods Folder</Button>
       </StackPanel>
       <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
         <Button Name="BtnActivateSelected" Command="{Binding StartGameModsClicked}" IsEnabled="{Binding GameActive, Converter={StaticResource NegatingValueConverter}}">Start Game With Mods</Button>

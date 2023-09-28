@@ -14,7 +14,7 @@ namespace ArxLibertatisModManager.Classes
         {
             try
             {
-                if (System.IO.File.Exists(url))
+                if (System.IO.File.Exists(url) || System.IO.Directory.Exists(url))
                 {
                     throw new ArgumentException("url cant be a path to a local file for security reasons");
                 }
@@ -36,6 +36,11 @@ namespace ArxLibertatisModManager.Classes
             {
                 throw new NotSupportedException("only windows, linux and osx are supported for opening urls atm");
             }
+        }
+
+        public static void OpenFolder(string path)
+        {
+            Process.Start(new ProcessStartInfo(path) { UseShellExecute = true });
         }
 
         public static string GetArxExecutableName()
